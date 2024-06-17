@@ -7,17 +7,17 @@ public class ItemToPurchase {
    //default constructor
    public ItemToPurchase() {
       itemName = "none";
+      itemDescription = "none";
       itemPrice = 0;
       itemQuantity = 0;
-      itemDescription = "none";
       return;
    }
 
    public ItemToPurchase(String itemName, String itemDescription,  int itemPrice, int itemQuantity) {
       this.itemName = itemName;
+      this.itemDescription = itemDescription;
       this.itemPrice = itemPrice;
       this.itemQuantity = itemQuantity;
-      this.itemDescription = itemDescription;
       return;
    }
    

@@ -8,31 +8,40 @@ public class ShoppingCartManager {
         // String description;
         
         
-        Scanner scnr = new Scanner(System.in);
+        Scanner sc= new Scanner(System.in);
         
         //prompt user for Customer's Name and today's date  
-        ShoppingCart shopper1 = new ShoppingCart();
-        // ItemToPurchase fourControllers = new ItemToPurchase();
-        // ItemToPurchase bikes = new ItemToPurchase();
         
         System.out.println("Enter Customer's Name:");
-		    customerName = scnr.nextLine();
+		    customerName = sc.nextLine();
         System.out.println("Enter Today's Date:");
         System.out.println("");
-        currentDate = scnr.nextLine();
+        currentDate = sc.nextLine();
         System.out.println("Customer Name: " + customerName);
         System.out.println("Today's Date: " + currentDate);
         System.out.println("");
-
+        
+        ShoppingCart shopper1 = new ShoppingCart(customerName, currentDate);
       
-
         shopper1.printMenu(shopper1);
+        // shopper1.printOutputShoppingCart();
+        // shopper1.printDescriptions();
+
+        // String itemToAddName = sc.nextLine();
+        // String itemToAddDesc = sc.nextLine();
+        // int itemToAddPrice = sc.nextInt();
+        // int itemToAddQuantity = sc.nextInt();
+        
+        // ItemToPurchase itemToAdd = new ItemToPurchase(itemToAddName, itemToAddDesc, itemToAddPrice, itemToAddQuantity);
+        // shopper1.addItem(itemToAdd);
+        
+        // String itemName = sc.nextLine();
+        // shopper1.removeItem(itemName);
+        
+        // ItemToPurchase itemToMod = new ItemToPurchase();
+        // shopper1.modifyItem(itemToMod);
         shopper1.getCostOfCart();
         
-        // bikes.setName(customerName);
-        // bikes.printItemCost();
-
-        scnr.close();
+        sc.close();
   }
-        
 }

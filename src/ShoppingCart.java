@@ -130,30 +130,6 @@ public class ShoppingCart {
         System.out.println("Total: $" + getCostOfCart());
     }
     
-
-
-// (4) Implement the printMenu() method. printMenu() has a ShoppingCart parameter, 
-// and outputs a menu of options to manipulate the shopping cart. 
-// Each option is represented by a single character. Build and output the menu within the method.
-
-// If the an invalid character is entered, continue to prompt for a valid choice. 
-// Hint: Implement Quit before implementing other options. Call printMenu() in the main() method. 
-//Continue to execute the menu until the user enters q to Quit. (3 pts) 
-
-
-
-
-//     MENU
-// a - Add item to cart
-// d - Remove item from cart
-// c - Change item quantity
-// i - Output items' descriptions
-// o - Output shopping cart
-// q - Quit
-
-// Choose an option: 
-
-
     public void printMenu(ShoppingCart userCart) {
         System.out.println("MENU");
         System.out.println("a - Add item to cart");
@@ -163,77 +139,73 @@ public class ShoppingCart {
         System.out.println("o - Output shopping cart");
         System.out.println("q - Quit");
         System.out.println("");
-      
-
-    char menuOp ='\0';
-          
-    while(menuOp != 'a' && menuOp != 'd' && menuOp != 'c' &&
-    menuOp != 'i' && menuOp != 'o' && menuOp != 'q') {
-        System.out.println("Choose an option:");
-        char option;
-        option = sc.next().charAt(0);
-        switch (option) {
-           case 'a':
-           sc.nextLine();
-            System.out.println("ADD ITEM TO CART");
-            System.out.println("Enter the item name:");
-            String userNameInput = sc.nextLine();  
-
-            System.out.println("Enter the item description:");
-            String userDescrptionInput = sc.nextLine();
-
-            System.out.println("Enter the item price:");
-            int userPriceInput = sc.nextInt();
+    
+        
+        
+        char menuOp = '\0';
+        while(menuOp != 'a' && menuOp != 'd' && menuOp != 'c' &&
+                menuOp != 'i' && menuOp != 'o' && menuOp != 'q') {
+            System.out.println("Choose an option:");
+            char option;
+            option = sc.next().charAt(0);
             sc.nextLine();
+            switch (option) {
+                case 'a':
+                    System.out.println("ADD ITEM TO CART");
+                    System.out.println("Enter the item name:");
+                    String userNameInput = sc.nextLine();
+                
+    
+                    System.out.println("Enter the item description:");
+                    String userDescriptionInput = sc.nextLine();
+    
+                    System.out.println("Enter the item price:");
+                    int userPriceInput = Integer.parseInt(sc.nextLine());
+    
+                    System.out.println("Enter the item quantity:");
+                    int userQuantityInput = Integer.parseInt(sc.nextLine());
+    
+                    ItemToPurchase newItem = new ItemToPurchase(userNameInput, userDescriptionInput, userPriceInput, userQuantityInput);
+                    addItem(newItem);
+    
+                    System.out.println();
+                    break;          
+             
+                case 'd':
+                    System.out.println("REMOVE ITEM FROM CART");
+                    System.out.println("Enter name of item to remove");
+                    String userInput = sc.nextLine();
+                    removeItem(userInput);
+                    break;
 
-            System.out.println("Enter the item quantity:");
-            int userQuanityInput = sc.nextInt();
-            System.out.println();
-            
-            ItemToPurchase newItem = new ItemToPurchase(userNameInput, userDescrptionInput, userPriceInput, userQuanityInput);
-            
-           addItem(newItem);
+                case 'c':
+                    String modNameInput = sc.nextLine();
+                    String modDescrptionInput = sc.nextLine();
+                    int modPriceInput = Integer.parseInt(sc.nextLine());
+                    int modQuanityInput = Integer.parseInt(sc.nextLine());
 
-           System.out.println();
-           break;
+                    ItemToPurchase itemToModify = new ItemToPurchase(modNameInput, modDescrptionInput, modPriceInput, modQuanityInput);
 
-           case 'd':
-           System.out.println("REMOVE ITEM FROM CART");
-           System.out.println("Enter name of item to remove");
-           String userInput = sc.nextLine();
-           removeItem(userInput);
-           break;
+                    modifyItem(itemToModify);
+                    break;
 
-           case 'c':
-           String modNameInput = sc.nextLine();
-           String modDescrptionInput = sc.nextLine();
-           int modPriceInput = sc.nextInt();
-           int modQuanityInput = sc.nextInt();
+                case 'i':
+                    printDescriptions();
+                    break;
 
+                    case 'o': //output shopping
+                        printOutputShoppingCart();
+                        break;
+    
+                case 'q':
+                    return;  
 
-           ItemToPurchase itemToModify = new ItemToPurchase(modNameInput, modDescrptionInput, modPriceInput, modQuanityInput);
-
-           modifyItem(itemToModify);
-           break;
-
-           case 'i':
-           printDescriptions();
-           break;
-
-           case 'o': //output shopping
-           printOutputShoppingCart();
-           break;
-
-           case 'q':
-           return;  
-
-           default:
-           System.out.println("Choose an option:");
-           System.out.println();
-           option = sc.next().charAt(0);
-           break;       
-       }          
-    }
-    sc.close();
+                default:
+                    System.out.println("Choose an option:");
+                    System.out.println();
+                    break;   
+        }
+    }  
+       
    }
 }
